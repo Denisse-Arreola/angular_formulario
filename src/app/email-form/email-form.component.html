@@ -1,0 +1,57 @@
+<div id="container">
+	<form (ngSubmit)="submit()" #forma="ngForm">
+		<h3 id="form-title">Generar cuenta de usuario</h3>
+		<div class="form-label" for="name">Nombre</div>
+		<input
+            type="text"
+            #name="ngModel"
+            [(ngModel)]="formulario.name"
+            placeholder="Introduzca su nombre"
+            name="name"
+            minlength="5"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}"
+          />
+		<div class="form-label" for="email">Correo electrónico</div>
+		<input
+            type="email"
+            #email="ngModel"
+            [(ngModel)]="formulario.email"
+            placeholder="Introduzca su correo electrónico"
+            name="email"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+          />
+		<div class="form-label" for="psw">Contraseña</div>
+		<input
+            type="password"
+            placeholder="Introduzca la contraseña"
+            #password="ngModel"
+            [(ngModel)]="formulario.password"
+            name="password"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}"
+          />
+		<div class="form-label" for="psw">Repetir Contraseña</div>
+		<input
+            type="password"
+            placeholder="Repetir la contraseña"
+            #repeatPass="ngModel"
+            [(ngModel)]="formulario.repeatPassword"
+            name="repeatPass"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !repeatPass.invalid, 'is-invalid': repeatPass.invalid}"
+          />
+		<br>
+		<div class="row">
+			<div class="col-lg">
+				<button type="submit" [disabled]="!forma.valid" class="signup-btn">Comenzar</button>
+			</div>
+		</div>
+	</form>
+</div>
